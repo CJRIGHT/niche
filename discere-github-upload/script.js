@@ -821,7 +821,7 @@ function bindSidePanelToggle() {
 
   function setCollapsed(collapsed) {
     document.body.classList.toggle("side-collapsed", collapsed);
-    button.textContent = collapsed ? "›" : "‹";
+    button.classList.toggle("is-open", !collapsed);
     button.setAttribute("aria-expanded", String(!collapsed));
     button.setAttribute("aria-label", collapsed ? "Expand side panel" : "Minimise side panel");
     localStorage.setItem(getUserStorageKey("sideCollapsed"), collapsed ? "yes" : "no");

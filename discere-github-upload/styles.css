@@ -42,7 +42,15 @@ textarea {
   display: grid;
   grid-template-columns: minmax(280px, 390px) minmax(0, 1fr);
   min-height: 100vh;
-  transition: grid-template-columns 180ms ease;
+  transition: grid-template-columns 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.side-collapsed .app-shell {
+  transition-delay: 90ms;
+}
+
+body:not(.side-collapsed) .app-shell {
+  transition-delay: 0ms;
 }
 
 .brand-panel {
@@ -53,9 +61,15 @@ textarea {
   gap: 32px;
   padding: 42px;
   color: white;
+  overflow: hidden;
   background:
     linear-gradient(rgba(16, 29, 42, 0.72), rgba(16, 29, 42, 0.72)),
     url("https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80") center/cover;
+}
+
+.brand-panel > :not(.side-toggle) {
+  will-change: transform, opacity;
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), opacity 170ms ease;
 }
 
 .side-toggle {
@@ -71,34 +85,66 @@ textarea {
   color: white;
   background: rgba(255, 255, 255, 0.14);
   cursor: pointer;
-  font-size: 1.4rem;
-  font-weight: 900;
+  transition: transform 180ms ease, background-color 220ms ease, border-color 220ms ease;
+}
+
+.side-toggle:hover {
+  border-color: rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.side-toggle:active {
+  transform: scale(0.94);
+}
+
+.side-toggle-icon {
+  display: flex;
+  width: 18px;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.side-toggle .bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  transform-origin: center;
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1), opacity 200ms ease;
+}
+
+.side-toggle.is-open .bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.side-toggle.is-open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.side-toggle.is-open .bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 .side-collapsed .app-shell {
-  grid-template-columns: 76px minmax(0, 1fr);
+  grid-template-columns: 64px minmax(0, 1fr);
 }
 
 .side-collapsed .brand-panel {
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
-  padding: 18px 10px;
+  padding: 14px 10px;
 }
 
-.side-collapsed .brand-panel > div:not(.brand-mark),
-.side-collapsed .profile-preview {
-  display: none;
-}
-
-.side-collapsed .brand-mark {
-  width: 46px;
-  height: 46px;
-  font-size: 1.45rem;
+.side-collapsed .brand-panel > :not(.side-toggle) {
+  opacity: 0;
+  transform: translateX(-72px);
+  pointer-events: none;
 }
 
 .side-collapsed .side-toggle {
-  position: static;
-  margin-top: 16px;
+  top: 14px;
+  right: 12px;
 }
 
 .brand-mark {
