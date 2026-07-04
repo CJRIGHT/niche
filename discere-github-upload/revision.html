@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Discere Revision Space</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="brand-panel" aria-label="Discere revision space">
+        <div class="brand-mark">D</div>
+        <button class="side-toggle" id="sideToggle" type="button" aria-label="Minimise side panel" aria-expanded="true">‹</button>
+        <div>
+          <p class="eyebrow">Discere</p>
+          <h1>Your personal revision space.</h1>
+          <p class="lead">
+            Use your recommended revision methods to create materials, practise actively, and build a study routine that matches how you learn.
+          </p>
+        </div>
+        <div class="profile-preview">
+          <div class="pulse-card">
+            <span>Learning profile</span>
+            <strong id="previewProfile">Loading profile</strong>
+          </div>
+          <div class="mini-grid" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="section-kicker">Personal space</p>
+            <h2 id="stageTitle">Your revision dashboard</h2>
+          </div>
+          <div class="account-actions">
+            <span class="user-pill" id="currentUserLabel"></span>
+            <a class="ghost-button link-button" href="./index.html" id="retakeButton">Retake questionnaire</a>
+            <button class="ghost-button" id="exportDataButton" type="button">Download backup</button>
+            <label class="ghost-button file-button" for="importDataInput">Import backup</label>
+            <input id="importDataInput" class="file-input" type="file" accept="application/json" />
+            <button class="ghost-button" id="logoutButton" type="button">Logout</button>
+          </div>
+        </header>
+
+        <section id="results" class="results">
+          <div class="result-hero">
+            <div>
+              <p class="section-kicker">Profile</p>
+              <div class="profile-title-row">
+                <h2 id="resultName">Your study profile</h2>
+                <button class="info-button" id="profileInfoButton" type="button" aria-label="Learn more about your profile">i</button>
+              </div>
+              <p id="resultDescription"></p>
+            </div>
+            <div class="profile-badge" id="profileBadge"></div>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="panel">
+              <h3>Best revision methods</h3>
+              <div id="methodsList" class="method-list"></div>
+            </article>
+            <article class="panel">
+              <h3>How you should learn</h3>
+              <ul id="learningPlan" class="plan-list"></ul>
+            </article>
+            <article class="panel">
+              <h3>Study session</h3>
+              <div id="sessionPlan" class="session-plan"></div>
+            </article>
+            <article class="panel">
+              <h3>Helpful adjustments</h3>
+              <div id="adjustments" class="chips"></div>
+            </article>
+          </div>
+
+          <section class="studio panel" id="methodStudio">
+            <div class="studio-header">
+              <div>
+                <p class="section-kicker">Revision studio</p>
+                <h3 id="studioTitle">Choose a method</h3>
+              </div>
+              <span id="studioCount" class="studio-count">0 saved</span>
+            </div>
+            <div id="studioBody" class="studio-body"></div>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <div class="modal-backdrop" id="profileModal" hidden>
+      <section class="profile-modal" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
+        <div class="studio-header">
+          <div>
+            <p class="section-kicker">Learning profile</p>
+            <h3 id="profileModalTitle">Your profile</h3>
+          </div>
+          <button class="ghost-button" id="closeProfileModal" type="button">Close</button>
+        </div>
+        <div id="profileModalBody" class="profile-modal-body"></div>
+      </section>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

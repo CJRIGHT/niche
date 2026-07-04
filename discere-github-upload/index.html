@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Discere</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="brand-panel" aria-label="Discere overview">
+        <div class="brand-mark">D</div>
+        <div>
+          <p class="eyebrow">Discere</p>
+          <h1>Find the way your brain likes to learn.</h1>
+          <p class="lead">
+            Answer ten quick questions and Discere will build a personal revision space with methods, routines, and support settings matched to you.
+          </p>
+        </div>
+        <div class="profile-preview">
+          <div class="pulse-card">
+            <span>Learning profile</span>
+            <strong id="previewProfile">Ready to discover</strong>
+          </div>
+          <div class="mini-grid" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="section-kicker">Questionnaire</p>
+            <h2 id="stageTitle">Start with your learning habits</h2>
+          </div>
+          <div class="account-actions">
+            <span class="user-pill" id="currentUserLabel"></span>
+            <button class="ghost-button" id="resetButton" type="button">Reset</button>
+            <button class="ghost-button" id="logoutButton" type="button">Logout</button>
+          </div>
+        </header>
+
+        <form id="quizForm" class="quiz" autocomplete="off">
+          <div id="questions" class="questions"></div>
+
+          <div class="actions">
+            <button class="primary-button" type="submit">Create my study space</button>
+            <span id="statusMessage" class="status" role="status"></span>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
